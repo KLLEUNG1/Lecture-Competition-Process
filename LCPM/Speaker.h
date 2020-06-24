@@ -6,6 +6,6 @@ using namespace std;
 class Speaker
 {
 public:
-	string s_name;   //选手姓名
-	double score[2];   //选手分数，一个选手最多有两轮得分
+	string m_name;   //选手姓名
+	double m_score[2];   //选手分数，一个选手最多有两轮得分
 };

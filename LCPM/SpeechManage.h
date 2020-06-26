@@ -3,12 +3,12 @@
 #include <vector>
 #include <map>
 #include "Speaker.h"
-#include <algorithm>  //包含算法头文件
+#include <algorithm>  //包含算法头文件 洗牌
 #include <deque>	//deque容器
 #include <functional>	//greater是内建函数对象
 #include <numeric>	//包含accumulate
 #include <string>
-
+#include <fstream>
 using namespace std;
 
 //设计演讲比赛管理类
@@ -34,6 +34,18 @@ public:
 	void speechContest();	//比赛
 
 	void showScore();	//显示得分
+
+	void saveRecord();	//保存记录
+
+	void loadRecord();	//读取记录
+
+	void showRecord();	//显示往届记录
+
+	bool fileIsEmpty;	//判断文件是否为空
+
+	void clearRecord();	//清空文件
+
+	map<int, vector<string>>m_Record;	//存放往届记录的容器
 
 	//成员属性
 	vector<int>v1;	//保存第一轮比赛选手编号的容器

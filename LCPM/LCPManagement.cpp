@@ -1,10 +1,14 @@
 #include <iostream>
 #include "SpeechManage.h"
 #include <string>
+#include <ctime> //包含随机入种
 using namespace std;
 
 int main()
 {
+	//随机数种子
+	srand((unsigned int)time(NULL));
+
 	//创建管理类对象
 	SpeechManage sm;
 
@@ -32,8 +36,10 @@ int main()
 			sm.startSpeech();
 			break;  
 		case 2:   //2.查看往届比赛记录
+			sm.showRecord();
 			break;
 		case 3:   //3.清空比赛记录
+			sm.clearRecord();
 			break;
 		case 0:   //0.退出系统
 			sm.exitSystem();

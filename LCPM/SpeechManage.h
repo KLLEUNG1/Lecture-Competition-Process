@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include <vector>
+#include <vector> 
 #include <map>
 #include "Speaker.h"
 #include <algorithm>  //包含算法头文件 洗牌
@@ -9,6 +9,7 @@
 #include <numeric>	//包含accumulate
 #include <string>
 #include <fstream>
+#include <windows.h>
 using namespace std;
 
 //设计演讲比赛管理类
@@ -18,6 +19,8 @@ public:
 	SpeechManage();   //构造函数
 
 	~SpeechManage();   //析构函数
+
+	void background();	//背景颜色
 
 	void show_menu();   //展示菜单
 
@@ -49,7 +52,7 @@ public:
 
 	//成员属性
 	vector<int>v1;	//保存第一轮比赛选手编号的容器
-	vector<int>v2;	//第一轮晋级选手编号容器
+	vector<int>v2;	//第二轮晋级选手编号容器
 	vector<int>vwinner;	//胜出的前三名选手编号容器
 	map<int, Speaker>m_speaker;	//存放编号以及对应具体选手容器
 	int m_round;	//存放比赛轮数

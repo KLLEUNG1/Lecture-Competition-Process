@@ -19,23 +19,38 @@ SpeechManage::~SpeechManage()
 
 }
 
+/*字体、背景初始化*/
+void SpeechManage::background()
+{
+	//SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),15 | 8 | 128 | 64);//初始化字体
+	system("color F8");//初始化背景
+}
+
 //菜单功能
 void SpeechManage::show_menu()
 {
-	cout << "*************************************************" << endl;
-	cout << "**************** 欢迎参加演讲比赛 ***************" << endl;
-	cout << "***************** 1.开始演讲比赛 ****************" << endl;
-	cout << "***************** 2.查看往届成绩 ****************" << endl;
-	cout << "***************** 3.清空比赛记录 ****************" << endl;
-	cout << "***************** 0.退出比赛程序 ****************" << endl;
-	cout << "*************************************************" << endl;
-	cout << endl;
+	cout << "                               *********************************         " << endl;
+	cout << "                               *|                             |*         " << endl;
+	cout << "                               *|                             |*         " << endl;
+	cout << "                               *|      欢迎参加演讲比赛       |*         " << endl;
+	cout << "                               *|                             |*         " << endl;
+	cout << "                               *|       1.开始演讲比赛        |*         " << endl;
+	cout << "                               *|                             |*         " << endl;
+	cout << "                               *|       2.查看往届成绩        |*         " << endl;
+	cout << "                               *|                             |*         " << endl;
+	cout << "                               *|       3.清空比赛记录        |*         " << endl;
+	cout << "                               *|                             |*         " << endl;
+	cout << "                               *|       0.退出比赛程序        |*         " << endl;
+	cout << "                               *|                             |*         " << endl;
+	cout << "                               *|                             |*         " << endl;
+	cout << "                               *********************************         " << endl;
+	cout << endl<<endl;
 }
 
 //退出系统
 void SpeechManage::exitSystem()
 {
-	cout << "欢迎下次使用" << endl;
+	cout << " 欢迎下次使用" << endl;
 	system("pause");
 	exit(0);
 }
@@ -120,7 +135,7 @@ void SpeechManage::startSpeech()
 	//加载往届记录
 	loadRecord();
 
-	cout << "本届比赛完毕！" << endl;
+	cout << " 本届比赛完毕！" << endl << endl;
 	system("pause");
 	system("cls");
 }
@@ -128,9 +143,11 @@ void SpeechManage::startSpeech()
 //抽签
 void SpeechManage::speechDraw()
 {
-	cout << "第" << this->m_round << "轮比赛选手正在抽签" << endl;
-	cout <<"------------------------------------" << endl;
-	cout << "抽签后演讲顺序如下：" << endl;
+	cout << " 第" << this->m_round << "轮比赛选手正在抽签" << endl;
+	cout << "---------------------------------------------------------------------------------------------------" << endl;
+	cout << "---------------------------------------------------------------------------------------------------" << endl;
+	cout << " 抽签后演讲顺序如下：" << endl;
+	cout << " ";
 
 	if (this->m_round == 1)
 	{
@@ -152,7 +169,7 @@ void SpeechManage::speechDraw()
 		}
 		cout << endl;
 	}
-	cout << "------------------------------------" << endl;
+	cout << "---------------------------------------------------------------------------------------------------" << endl;
 	system("pause");
 	cout << endl;
 }
@@ -160,7 +177,7 @@ void SpeechManage::speechDraw()
 //比赛
 void SpeechManage::speechContest()
 {
-	cout << "----------第" << this->m_round << "轮比赛正式开始----------" << endl;
+	cout << "-----------------------------------------第" << this->m_round << "轮比赛正式开始-----------------------------------------" << endl;
 	
 	//准备临时容器，存放小组成绩
 	multimap<double, int, greater<double>> groupScore;
@@ -209,12 +226,12 @@ void SpeechManage::speechContest()
 		//每6人取出前三名
 		if (num % 6 == 0)
 		{
-			cout << "第" << num / 6 << "小组比赛名次：" << endl;
+			cout << " 第" << num / 6 << "小组比赛名次：" << endl;
 			for (multimap<double, int, greater<double>>::iterator it = groupScore.begin(); it != groupScore.end();it++)
 			{
-				cout << "编号：" << it->second
-					<< " 姓名：" << this->m_speaker[it->second].m_name
-					<< " 成绩：" << this->m_speaker[it->second].m_score[this->m_round - 1] << endl;
+				cout << " 编号：" << it->second
+					<< "        姓名：" << this->m_speaker[it->second].m_name
+					<< "        成绩：" << this->m_speaker[it->second].m_score[this->m_round - 1] << endl;
 			}
 
 			//取走前三名
@@ -236,7 +253,7 @@ void SpeechManage::speechContest()
 		}
 	}
 
-	cout << "------------第" << this->m_round << "轮比赛完毕！------------" << endl;
+	cout << "-------------------------------------------第" << this->m_round << "轮比赛完毕！-----------------------------------------" << endl;
 	system("pause");
 	//cout << endl;
 }
@@ -244,7 +261,7 @@ void SpeechManage::speechContest()
 //显示得分
 void SpeechManage::showScore()
 {
-	cout << "--------------第" << this->m_round << "轮晋级选手信息如下：--------------" << endl;
+	cout << "---------------------------------------第" << this->m_round << "轮晋级选手信息如下：-------------------------------------" << endl;
 
 	vector<int>v;
 	if (this->m_round == 1)
@@ -258,9 +275,9 @@ void SpeechManage::showScore()
 
 	for (vector<int>::iterator it = v.begin(); it != v.end(); it++)
 	{
-		cout << "选手编号：" << *it
-			<< " 姓名：" << this->m_speaker[*it].m_name
-			<< " 得分：" << this->m_speaker[*it].m_score[this->m_round - 1] << endl;
+		cout << " 选手编号：" << *it
+			<< "        姓名：" << this->m_speaker[*it].m_name
+			<< "        得分：" << this->m_speaker[*it].m_score[this->m_round - 1] << endl;
 	}
 	cout << endl;
 
@@ -284,7 +301,7 @@ void SpeechManage::saveRecord()
 
 	//关闭
 	ofs.close();
-	cout << "记录已经保存" << endl;
+	cout << " 记录已经保存" << endl<<endl;
 
 	//更改文件不为空状态
 	fileIsEmpty = false;
@@ -362,16 +379,16 @@ void SpeechManage::showRecord()
 {
 	if (fileIsEmpty)
 	{
-		cout << "文件为空或者文件不存在！" << endl;
+		cout << " 文件为空或者文件不存在！" << endl;
 	}
 	else
 	{
 		for (int i = 0; i < m_Record.size(); i++)
 		{
-			cout << "第" << i + 1 << "届 "
-				<< "冠军编号：" << m_Record[i][0] << " 得分：" << m_Record[i][1] << " "
-				<< "亚军编号：" << m_Record[i][2] << " 得分：" << m_Record[i][3] << " "
-				<< "季军编号：" << m_Record[i][4] << " 得分：" << m_Record[i][5] << endl;
+			cout << " 第" << i + 1 << "届 "
+				<< " 冠军编号：" << m_Record[i][0] << " 得分：" << m_Record[i][1] << " "
+				<< "  亚军编号：" << m_Record[i][2] << " 得分：" << m_Record[i][3] << " "
+				<< "  季军编号：" << m_Record[i][4] << " 得分：" << m_Record[i][5] << endl;
 
 		}
 	}
@@ -383,12 +400,13 @@ void SpeechManage::showRecord()
 //清空文件
 void SpeechManage::clearRecord()
 {
-	cout << "是否确定清空文件？" << endl;
-	cout << "1、是" << endl;
-	cout << "2、否" << endl;
+	cout << " 是否确定清空文件？" << endl;
+	cout << " 1、是" << endl;
+	cout << " 2、否" << endl;
 
 	int select = 0;	//接收用户输入
 
+	cout << " ";
 	cin >> select;
 	
 	if (select == 1)
@@ -406,7 +424,7 @@ void SpeechManage::clearRecord()
 		//加载往届记录
 		loadRecord();
 
-		cout << "清空成功！" << endl;
+		cout << " 清空成功！" << endl;
 	}
 
 	system("pause");

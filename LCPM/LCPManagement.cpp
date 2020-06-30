@@ -6,11 +6,15 @@ using namespace std;
 
 int main()
 {
+	
+
 	//随机数种子
 	srand((unsigned int)time(NULL));
 
 	//创建管理类对象
 	SpeechManage sm;
+
+	sm.background();
 
 	/*测试12名选手创建
 	for (map<int, Speaker>::iterator it = sm.speaker.begin();
@@ -27,7 +31,8 @@ int main()
 	{
 		sm.show_menu();
 
-		cout << "请输入您得选择：" << endl;
+		cout << " 请输入您得选择："<<endl ;
+		cout << " ";
 		cin >> choice;   //接受用户得选项
 
 		switch (choice)
